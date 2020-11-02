@@ -46,7 +46,7 @@
 #include <ui/DisplayInfo.h>
 #include <ui/GraphicBufferMapper.h>
 
-#include <gui/ISurfaceComposer.h>
+//#include <gui/ISurfaceComposer.h>
 
 
 #include "RockchipRga.h"

@@ -397,25 +397,19 @@ int NormalRgaSetSrcTransModeInfo(struct rga_req *msg,
 
 bool NormalRgaIsBppFormat(int format)
 {
-	bool ret = false;
-
 	switch (format) {
 		case RK_FORMAT_BPP1:
 		case RK_FORMAT_BPP2:
 		case RK_FORMAT_BPP4:
 		case RK_FORMAT_BPP8:
-			ret = true;
-		default:
-			break;
+			return true;
 	}
 
-	return ret;
+	return false;
 }
 
 bool NormalRgaIsYuvFormat(int format)
 {
-	bool ret = false;
-
 	switch (format) {
 		case RK_FORMAT_YCbCr_422_SP:
 		case RK_FORMAT_YCbCr_422_P:  
@@ -427,11 +421,10 @@ bool NormalRgaIsYuvFormat(int format)
 		case RK_FORMAT_YCrCb_420_P:
 		case RK_FORMAT_YCbCr_420_SP_10B:
 		case RK_FORMAT_YCrCb_420_SP_10B:
-			ret = true;
-			break;
+			return true;
 	}
 
-	return ret;
+	return false;
 }
 
 bool NormalRgaIsRgbFormat(int format)

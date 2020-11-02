@@ -13,9 +13,9 @@
 #include <gralloc_rga.h>
 gralloc_module_t const *mAllocMod = NULL;
 
-#ifdef RK3368
-#define private_handle_t IMG_native_handle_t
-#endif
+//#ifdef RK3368
+//#define private_handle_t IMG_native_handle_t
+//#endif
 
 //enum {
 //	GET_HANDLE_FD           = GRALLOC_MODULE_PERFORM_GET_HADNLE_PRIME_FD,
@@ -63,28 +63,28 @@ int gralloc_backend_get_attrs(private_handle_t* hnd, void *attrs)
 
 #else
 
-#ifdef RK3368
+//#ifdef RK3368
 
-int gralloc_backend_get_fd(private_handle_t* hnd, int *fd)
-{
-	*fd = hnd->fd[0];
-	return 0;
-}
+//int gralloc_backend_get_fd(private_handle_t* hnd, int *fd)
+//{
+	//*fd = hnd->fd[0];
+	//return 0;
+//}
 
-int gralloc_backend_get_attrs(private_handle_t* hnd, void *attrs)
-{
-	std::vector<int> *attributes = (std::vector<int> *)attrs;
-	attributes->clear();
-	attributes->push_back(hnd->width);
-	attributes->push_back(hnd->height);
-	attributes->push_back(hnd->stride);
-	attributes->push_back(hnd->format);
-	attributes->push_back(hnd->size);
-	attributes->push_back(hnd->type);
-	return 0;
-}
+//int gralloc_backend_get_attrs(private_handle_t* hnd, void *attrs)
+//{
+	//std::vector<int> *attributes = (std::vector<int> *)attrs;
+	//attributes->clear();
+	//attributes->push_back(hnd->width);
+	//attributes->push_back(hnd->height);
+	//attributes->push_back(hnd->stride);
+	//attributes->push_back(hnd->format);
+	//attributes->push_back(hnd->size);
+	//attributes->push_back(hnd->type);
+	//return 0;
+//}
 
-#endif		//RK3368
+//#endif		//RK3368
 
 #endif		//ANDROID_7_DRM
 
@@ -105,7 +105,7 @@ int RkRgaGetHandleFd(buffer_handle_t handle, int *fd)
 		//return -ENODEV;
 #ifdef ANDROID_7_DRM
 
-#ifndef RK3368
+//#ifndef RK3368
 	//ret = gralloc_drm_handle_get_prime_fd(handle,fd);
 
 	int op = GRALLOC_MODULE_PERFORM_GET_HADNLE_PRIME_FD;
@@ -113,10 +113,10 @@ int RkRgaGetHandleFd(buffer_handle_t handle, int *fd)
 		mAllocMod->perform(mAllocMod, op, handle, fd);
 	else
 		return -ENODEV;
-#else
-	private_handle_t* hnd = (private_handle_t*)handle;
-	ret = gralloc_backend_get_fd(hnd,fd);
-#endif		//RK3368
+//#else
+//	private_handle_t* hnd = (private_handle_t*)handle;
+//	ret = gralloc_backend_get_fd(hnd,fd);
+//#endif		//RK3368
 
 #else
 	private_handle_t* hnd = (private_handle_t*)handle;
