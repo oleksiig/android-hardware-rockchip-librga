@@ -20,21 +20,21 @@ LOCAL_C_INCLUDES += hardware/libhardware/include
 LOCAL_C_INCLUDES += hardware/libhardware/modules/gralloc
 
 LOCAL_SHARED_LIBRARIES += \
-	libdrm \
-	libdrm_rockchip \
-	liblog \
-	libui \
-	libEGL \
-	libGLESv2 \
-	libGLESv1_CM \
-	libcutils \
-	libhardware \
-	libbinder \
-	android.hidl.token@1.0-utils \
-	android.hardware.graphics.bufferqueue@2.0        
+    libdrm \
+    libdrm_rockchip \
+    liblog \
+    libui \
+    libEGL \
+    libGLESv2 \
+    libGLESv1_CM \
+    libcutils \
+    libhardware \
+    libbinder \
+    android.hidl.token@1.0-utils \
+    android.hardware.graphics.bufferqueue@1.0        
 
 LOCAL_CFLAGS := \
-	-DLOG_TAG=\"librga\"
+    -DLOG_TAG=\"librga\"
 
 ifneq ($(strip $(TARGET_BOARD_PLATFORM)),rk3368)
 LOCAL_SHARED_LIBRARIES += libgralloc_drm 
