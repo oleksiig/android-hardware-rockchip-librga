@@ -42,9 +42,9 @@ int checkRectForRga(rga_rect_t rect)
 	}
 
 	if (NormalRgaIsYuvFormat(RkRgaGetRgaFormat(rect.format)) &&
-		((rect.wstride % 8) || (rect.xoffset % 2) || (rect.width % 2) ||
+		((rect.xoffset % 2) || (rect.width % 2) ||
 		(rect.yoffset % 2) || (rect.height % 2) || (rect.hstride % 2))) {
-		ALOGE("err wstride is not align to 8 or yuv not align to 2");
+		ALOGE("YUV not align to 2");
 		return -EINVAL;
 	}
 
@@ -56,8 +56,8 @@ int isRectValid(rga_rect_t rect)
 	return rect.width > 0 && rect.height > 0;
 }
 
-int NormalRgaGetRects(buffer_handle_t src,
-		buffer_handle_t dst,int* sType,int* dType,drm_rga_t* tmpRects)
+int NormalRgaGetRects( buffer_handle_t src, buffer_handle_t dst,
+						int* sType, int* dType, drm_rga_t* tmpRects)
 {
 	int ret = 0;
 	std::vector<int> srcAttrs,dstAttrs;
@@ -287,7 +287,6 @@ int NormalRgaSetPatVirtualInfo(struct rga_req *msg,
 	msg->pat.yrgb_addr = yrgb_addr;
 	msg->pat.uv_addr  = uv_addr;
 	msg->pat.v_addr   = v_addr;
-    ALOGD("yrgb_addr=%zx, uv_addr=%zx, v_addr=%zx", yrgb_addr, uv_addr, v_addr);
 	msg->pat.vir_w = vir_w;
 	msg->pat.vir_h = vir_h;
 	msg->pat.format = format;

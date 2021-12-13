@@ -35,14 +35,11 @@
 #include <time.h>
 #include <unistd.h>
 #include <utils/Singleton.h>
-
 #include <sys/mman.h>
 #include <linux/stddef.h>
 
-#include <hardware/rga.h>
-#include "stdio.h"
-
 #include "drmrga.h"
+
 #ifndef UN_NEED_GL
 #include "GraphicBuffer.h"
 #endif

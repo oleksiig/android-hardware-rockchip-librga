@@ -13,24 +13,19 @@
 #ifndef _rockchip_normal_rga_h_
 #define _rockchip_normal_rga_h_
 
-#ifdef ANDROID_7_DRM
 #define RGA_BUF_GEM_TYPE_MASK      0xC0
 #define RGA_BUF_GEM_TYPE_DMA       0x80
-#endif
 
 #include <stdint.h>
 #include <vector>
 #include <sys/types.h>
-
-//#include <system/window.h>
-
 #include <utils/Thread.h>
 
 #include <EGL/egl.h>
 #include <GLES/gl.h>
 
-//////////////////////////////////////////////////////////////////////////////////
 #include <hardware/hardware.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -47,9 +42,7 @@
 #include <sys/mman.h>
 #include <linux/stddef.h>
 
-#include <hardware/rga.h>
-#include "stdio.h"
-
+#include "rga.h"
 #include "drmrga.h"
 #include "NormalRgaContext.h"
 

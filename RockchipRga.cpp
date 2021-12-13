@@ -36,23 +36,22 @@
 
 #include <utils/Atomic.h>
 #include <utils/Errors.h>
+#include <android/log.h>
 #include <utils/Log.h>
+#include <log/log_main.h>
 #include <utils/Mutex.h>
 #include <utils/Singleton.h>
 
 #include <ui/PixelFormat.h>
 #include <ui/Rect.h>
 #include <ui/Region.h>
-#include <ui/DisplayInfo.h>
 #include <ui/GraphicBufferMapper.h>
-
-//#include <gui/ISurfaceComposer.h>
-
 
 #include "RockchipRga.h"
 #include "RgaApi.h"
-#include "version.h"
 #include "normal/NormalRga.h"
+
+#define RK_GRAPHICS_VER "version:1.00"
 
 namespace android {
 
@@ -132,7 +131,7 @@ int RockchipRga::RkRgaLogOutUserPara(rga_info *rgaInfo)
         return -EINVAL;
 
     ALOGD("fd-vir-phy-hnd-format[%d, %p, %p, %p, %d]", rgaInfo->fd,
-	rgaInfo->virAddr, rgaInfo->phyAddr, (void*)rgaInfo->hnd, rgaInfo->format);
+    rgaInfo->virAddr, rgaInfo->phyAddr, (void*)rgaInfo->hnd, rgaInfo->format);
     ALOGD("rect[%d, %d, %d, %d, %d, %d, %d, %d]",
         rgaInfo->rect.xoffset, rgaInfo->rect.yoffset,
         rgaInfo->rect.width,   rgaInfo->rect.height, rgaInfo->rect.wstride,
